@@ -9,6 +9,5 @@ require "vagrant-boxen/boxen_provisioner"
 
 module Vagrant
   module Boxen
-    # Your code goes here...
   end
 end
