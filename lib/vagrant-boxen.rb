@@ -5,7 +5,7 @@ if File.exists?(File.join(File.expand_path('../../', __FILE__), '.git'))
 end
 
 require "vagrant-boxen/version"
-require "vagrant-boxen/boxen_provisioner"
+require "vagrant-boxen/provisioner"
 
 module Vagrant
   module Boxen
