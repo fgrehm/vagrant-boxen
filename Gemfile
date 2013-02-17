@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in vagrant-boxen.gemspec
 gemspec
+
+gem 'debugger'
+
+gem 'rb-inotify', '~> 0.8.8'
+gem 'guard'
+gem 'guard-rspec'

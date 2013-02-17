@@ -18,4 +18,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency 'vagrant'
+
+  gem.add_development_dependency 'rspec'
 end
