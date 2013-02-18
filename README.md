@@ -1,24 +1,58 @@
 # Vagrant::Boxen
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/fgrehm/vagrant-boxen.png)](https://travis-ci.org/fgrehm/vagrant-boxen)
+[![Code Climate](https://codeclimate.com/github/fgrehm/vagrant-boxen.png)](https://codeclimate.com/github/fgrehm/vagrant-boxen)
+
+Inspired by [Rails Wizard](http://railswizard.org/) and GitHub's
+[Boxen](http://boxen.github.com/), this gem attempts to lower the "entry barrier"
+of getting a manageable Vagrant machine targetted for development up and
+running without the need to learn [Puppet](https://puppetlabs.com/puppet/what-is-puppet/)
+or [Chef](http://www.opscode.com/chef/).
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
+If you use the gem version of Vagrant, use:
 
-    gem 'vagrant-boxen'
+```terminal
+$ gem install vagrant-boxen
+```
 
-And then execute:
+otherwise, use:
 
-    $ bundle
+```terminal
+$ vagrant gem install vagrant-boxen
+```
 
-Or install it yourself as:
-
-    $ gem install vagrant-boxen
 
 ## Usage
 
-TODO: Write usage instructions here
+For now, the only module available is `memcached` and you can set it up on your
+`Vagrantfile` with:
+
+```ruby
+Vagrant::Config.run do |config|
+  # ... other settings ...
+  config.vm.provision Vagrant::Boxen::Provisioner do |boxen|
+    boxen.memcached!
+  end
+end
+```
+
+While the modules provided might work on most linux distributions, I'm testing
+it all the time on a Ubuntu 12.10 64bits box based on https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box
+
+To find out more about the planned functionality, check out the
+[project's issues](https://github.com/fgrehm/vagrant-boxen/issues).
+
+
+## How does it work?
+
+Under the hood, [`Vagrant::Boxen::Provisioner`](https://github.com/fgrehm/vagrant-boxen/blob/master/lib/vagrant-boxen/provisioner.rb)
+will take care of generating the puppet manifest that will get passed to an instance of
+[`Vagrant::Provisioners::Puppet`](https://github.com/mitchellh/vagrant/blob/1-0-stable/lib/vagrant/provisioners/puppet.rb)
+and will be applied to the guest machine.
+
 
 ## Contributing
 
