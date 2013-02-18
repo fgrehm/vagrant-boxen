@@ -2,8 +2,8 @@ require "bundler/gem_tasks"
 
 task :update do
   require 'fileutils'
-  `librarian-puppet install --path="puppet/modules" --strip-dot-git`
-  Dir['./puppet/modules/*/{.git,.gitignore,tests,spec,Rakefile}'].each do |path|
+  sh 'librarian-puppet install --path="puppet/modules" --strip-dot-git --clean --verbose'
+  Dir['./puppet/modules/*/{.git,.gitignore,tests,spec,Rakefile,.travis.yml}'].each do |path|
     FileUtils.rm_rf path
   end
 end
