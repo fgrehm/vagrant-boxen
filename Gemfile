@@ -4,7 +4,12 @@ gemspec
 
 group :development do
   gem 'debugger'
+
   gem 'rb-inotify', '~> 0.8.8'
+
   gem 'guard'
   gem 'guard-rspec'
+
+  gem 'simplecov'
+  gem 'librarian-puppet'
 end

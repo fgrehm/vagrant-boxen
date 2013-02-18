@@ -19,4 +19,6 @@ begin
   end
 
   task :default => :coverage
+
+  task :ci => :spec
 rescue LoadError; end
