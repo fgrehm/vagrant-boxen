@@ -20,5 +20,8 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'vagrant'
 
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'rspec-spies'
+  gem.add_development_dependency 'rspec-fire'
+  gem.add_development_dependency 'simplecov'
   gem.add_development_dependency 'librarian-puppet'
 end
