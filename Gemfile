@@ -2,6 +2,14 @@ source 'https://rubygems.org'
 
 gemspec
 
+group :test do
+  gem 'rake'
+
+  gem 'rspec'
+  gem 'rspec-spies'
+  gem 'rspec-fire'
+end
+
 group :development do
   gem 'debugger'
 
