@@ -25,7 +25,7 @@ module Vagrant
       def prepare
         Dir.mkdir @manifests_dir unless Dir.exists? @manifests_dir
         if config.memcached?
-          File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print "package { 'memcached': ensure => 'latest' }" }
+          File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print "class { 'memcached': }" }
         else
           File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print "" }
         end

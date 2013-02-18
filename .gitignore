@@ -3,6 +3,7 @@
 .bundle
 .config
 .yardoc
+.librarian/
 Gemfile.lock
 InstalledFiles
 _yardoc
@@ -15,4 +16,6 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+.vagrant
+.tmp/
 coverage/

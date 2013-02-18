@@ -1,0 +1,10 @@
+GIT
+  remote: https://github.com/saz/puppet-memcached.git
+  ref: master
+  sha: 51af7b08b145eacf55409147bc142b610a8db0ac
+  specs:
+    memcached (2.1.0)
+
+DEPENDENCIES
+  memcached (>= 0)
+

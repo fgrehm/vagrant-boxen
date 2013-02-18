@@ -1,5 +1,13 @@
 require "bundler/gem_tasks"
 
+task :update do
+  require 'fileutils'
+  `librarian-puppet install --path="puppet/modules" --strip-dot-git`
+  Dir['./puppet/modules/*/{.git,.gitignore,tests,spec,Rakefile}'].each do |path|
+    FileUtils.rm_rf path
+  end
+end
+
 begin
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec)
