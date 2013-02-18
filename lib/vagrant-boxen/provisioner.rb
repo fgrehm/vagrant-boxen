@@ -3,7 +3,6 @@ module Vagrant
     class Provisioner < Vagrant::Provisioners::Base
       class Config < Vagrant::Config::Base
         def memcached!
-          puts 'Will install memcached with defaults'
           @memcached = true
         end
 
@@ -16,16 +15,20 @@ module Vagrant
         Config
       end
 
-      def initialize(env, config)
-        super
+      def initialize(env, config, provisioner = nil)
+        super(env, config)
         @logger        = Log4r::Logger.new("vagrant::provisioners::boxen")
         @manifests_dir = "/tmp/vagrant-boxen-#{env['vm'].uuid}"
-        Dir.mkdir @manifests_dir unless Dir.exists? @manifests_dir
-        setup_puppet_provisioner
+        @puppet_provisioner = provisioner ? provisioner : setup_puppet_provisioner
       end
 
       def prepare
-        File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.puts "package { 'memcached': ensure => 'latest' }" } if config.memcached?
+        Dir.mkdir @manifests_dir unless Dir.exists? @manifests_dir
+        if config.memcached?
+          File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print "package { 'memcached': ensure => 'latest' }" }
+        else
+          File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print "" }
+        end
         @puppet_provisioner.prepare
       end
 
@@ -43,9 +46,8 @@ module Vagrant
         # The root path to be used on the guest machine, changed to avoid
         # collision with the default path for puppet provisioner
         config.pp_path = '/tmp/vagrant-boxen-puppet'
-        config.options << [ '--verbose' ]
-        config.options << ['--debug '] if ENV['DEBUG'] == '1'
-        @puppet_provisioner = Vagrant::Provisioners::Puppet.new(env, config)
+        config.options << [ '--verbose', '--debug '] if ENV['DEBUG'] == '1'
+        Vagrant::Provisioners::Puppet.new(env, config)
       end
     end
   end
