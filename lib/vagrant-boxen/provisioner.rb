@@ -23,7 +23,7 @@ module Vagrant
       end
 
       def prepare
-        Dir.mkdir @manifests_dir unless Dir.exists? @manifests_dir
+        Dir.mkdir @manifests_dir unless File.directory? @manifests_dir
         if config.memcached?
           File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print "class { 'memcached': }" }
         else
