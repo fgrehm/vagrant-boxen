@@ -1,7 +1,7 @@
 # Vagrant::Boxen
 
 [![Build Status](https://travis-ci.org/fgrehm/vagrant-boxen.png)](https://travis-ci.org/fgrehm/vagrant-boxen)
-[![Code Climate](https://codeclimate.com/github/fgrehm/vagrant-boxen.png)](https://codeclimate.com/github/fgrehm/vagrant-boxen)
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/fgrehm/vagrant-boxen)
 
 Inspired by [Rails Wizard](http://railswizard.org/) and GitHub's
 [Boxen](http://boxen.github.com/), this gem attempts to lower the "entry barrier"
