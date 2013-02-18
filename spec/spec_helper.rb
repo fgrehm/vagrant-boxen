@@ -9,9 +9,6 @@ require 'bundler/setup'
 
 Bundler.require
 
-require 'vagrant'
-require 'vagrant/test_helpers'
-
 require 'rspec-spies'
 
 require 'rspec/fire'
