@@ -4,7 +4,7 @@ describe Vagrant::Boxen::Provisioner do
 	let(:uuid)                  { 'box-uuid' }
 	let(:config)                { described_class::Config.new }
 	let(:puppet_manifests_path) { "/tmp/vagrant-boxen-#{uuid}" }
-	let(:puppet_module_path)    { File.join(File.expand_path('../../../', __FILE__), 'puppet/modules') }
+	let(:puppet_module_path)    { File.join(File.expand_path('../../../', __FILE__), 'puppet-modules') }
 
 	before do
 		@app, @env = action_env(vagrant_env.vms.values.first.env)

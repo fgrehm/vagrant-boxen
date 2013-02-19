@@ -42,7 +42,7 @@ module Vagrant
         config = Vagrant::Provisioners::Puppet::Config.new
         config.manifests_path = @manifests_dir
         config.manifest_file  = "site.pp"
-        config.module_path    = File.join(File.expand_path('../../../', __FILE__), 'puppet/modules')
+        config.module_path    = File.join(File.expand_path('../../../', __FILE__), 'puppet-modules')
         # The root path to be used on the guest machine, changed to avoid
         # collision with the default path for puppet provisioner
         config.pp_path = '/tmp/vagrant-boxen-puppet'
