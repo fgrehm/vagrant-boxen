@@ -17,8 +17,8 @@ module Vagrant
 
       def initialize(env, config, provisioner = nil)
         super(env, config)
-        @logger        = Log4r::Logger.new("vagrant::provisioners::boxen")
-        @manifests_dir = "/tmp/vagrant-boxen-#{env['vm'].uuid}"
+        @logger             = Log4r::Logger.new("vagrant::provisioners::boxen")
+        @manifests_dir      = "/tmp/vagrant-boxen-#{env['vm'].uuid}"
         @puppet_provisioner = provisioner ? provisioner : setup_puppet_provisioner
       end
 

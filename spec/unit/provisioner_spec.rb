@@ -39,7 +39,6 @@ describe Vagrant::Boxen::Provisioner do
       end
 
       it 'generates box manifest using the builder' do
-        subject.prepare
         File.read("#{puppet_manifests_path}/site.pp").should == 'PUPPET MANIFEST!'
       end
 
