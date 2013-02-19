@@ -24,11 +24,8 @@ module Vagrant
 
       def prepare
         Dir.mkdir @manifests_dir unless File.directory? @manifests_dir
-        if config.memcached?
-          File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print "class { 'memcached': }" }
-        else
-          File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print "" }
-        end
+        builder = ManifestBuilder.new(config)
+        File.open("#{@manifests_dir}/site.pp", 'w') { |f| f.print builder.build }
         @puppet_provisioner.prepare
       end
 
