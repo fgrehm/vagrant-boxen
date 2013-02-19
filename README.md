@@ -39,8 +39,8 @@ Vagrant::Config.run do |config|
 end
 ```
 
-While the modules provided might work on most linux distributions, I'm testing
-it all the time on a Ubuntu 12.10 64bits box based on https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box
+While the modules provided might work on most linux distributions, I'm developing
+against a Ubuntu 12.10 64bits box based on https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box
 
 To find out more about the planned functionality, check out the
 [project's issues](https://github.com/fgrehm/vagrant-boxen/issues).
@@ -49,9 +49,9 @@ To find out more about the planned functionality, check out the
 ## How does it work?
 
 Under the hood, [`Vagrant::Boxen::Provisioner`](https://github.com/fgrehm/vagrant-boxen/blob/master/lib/vagrant-boxen/provisioner.rb)
-will take care of generating the puppet manifest that will get passed to an instance of
-[`Vagrant::Provisioners::Puppet`](https://github.com/mitchellh/vagrant/blob/1-0-stable/lib/vagrant/provisioners/puppet.rb)
-and will be applied to the guest machine.
+will generate a puppet manifest based on the configured modules that will get
+passed to a [`Vagrant::Provisioners::Puppet`](https://github.com/mitchellh/vagrant/blob/1-0-stable/lib/vagrant/provisioners/puppet.rb)
+configured to use the bundled puppet modules.
 
 
 ## Contributing
