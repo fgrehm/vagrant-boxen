@@ -1,6 +1,7 @@
 require 'vagrant'
 
 if File.exists?(File.join(File.expand_path('../../', __FILE__), '.git'))
+  ENV['DEBUG'] = '1'
   $:.unshift(File.expand_path('../../lib', __FILE__))
 end
 
