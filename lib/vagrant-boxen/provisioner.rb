@@ -2,17 +2,20 @@ module Vagrant
   module Boxen
     class Provisioner < Vagrant::Provisioners::Base
       class Config < Vagrant::Config::Base
-        def memcached!
-          @memcached = true
+        attr_reader :enabled_modules
+
+        def initialize(*args)
+          super
+          @enabled_modules = []
         end
 
-        def memcached?
-          @memcached
+        def enable_module(mod)
+          @enabled_modules << mod
         end
       end
 
       def self.config_class
-        Config
+        Config.instance_eval { include Vagrant::Boxen::Modules::Memcached::Config }
       end
 
       def initialize(env, config, provisioner = nil)

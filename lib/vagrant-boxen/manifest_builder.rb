@@ -6,9 +6,9 @@ module Vagrant
       end
 
       def build
-        @config.memcached? ?
-          "class { 'memcached': }" :
-          ''
+        @config.enabled_modules.map do |mod|
+          mod.build_manifest
+        end.join("\n")
       end
     end
   end
