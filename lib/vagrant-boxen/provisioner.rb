@@ -15,7 +15,7 @@ module Vagrant
       end
 
       def self.config_class
-        Config.instance_eval { include Vagrant::Boxen::Modules::Memcached::Config }
+        Config
       end
 
       def initialize(env, config, provisioner = nil)

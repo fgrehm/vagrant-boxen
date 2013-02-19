@@ -11,3 +11,7 @@ module Vagrant::Boxen::Modules
     end
   end
 end
+
+Vagrant::Boxen::Provisioner.config_class.instance_eval do
+  include Vagrant::Boxen::Modules::Memcached::Config
+end
