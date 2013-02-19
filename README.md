@@ -31,6 +31,7 @@ For now, the only module available is `memcached` and you can set it up on your
 `Vagrantfile` with:
 
 ```ruby
+require 'vagrant-boxen'
 Vagrant::Config.run do |config|
   # ... other settings ...
   config.vm.provision Vagrant::Boxen::Provisioner do |boxen|
