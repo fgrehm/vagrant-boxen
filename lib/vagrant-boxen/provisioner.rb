@@ -9,8 +9,8 @@ module Vagrant
           @enabled_modules = []
         end
 
-        def install(mod)
-          enable_module module_for(mod).new
+        def install(*mods)
+          mods.each { |mod| enable_module module_for(mod).new({}) }
         end
 
         def enable_module(mod)
