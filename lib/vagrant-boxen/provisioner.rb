@@ -9,8 +9,25 @@ module Vagrant
           @enabled_modules = []
         end
 
+        def install(mod)
+          enable_module module_for(mod).new
+        end
+
         def enable_module(mod)
           @enabled_modules << mod
+        end
+
+        protected
+
+        def module_for(mod)
+          Vagrant::Boxen::Modules.const_get classify_string(mod)
+        end
+
+        def classify_string(string)
+          string.to_s.split('_').map do |word|
+            word[0] = word[0].upcase
+            word
+          end.join
         end
       end
 
