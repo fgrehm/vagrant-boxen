@@ -46,6 +46,9 @@ Vagrant::Config.run do |config|
 end
 ```
 
+For now, please refer to the sample [Vagrantfile](Vagrantfile) on this repo for
+the most up to date documentation.
+
 While the modules provided might work on most linux distributions, [I'm developing
 against](Vagrantfile) an Ubuntu 12.10 64bits box based on https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box
 
