@@ -8,7 +8,7 @@ module Vagrant::Boxen::Modules
 
     def initialize(options)
       @options = {
-        :redis_max_memory => options[:memory],
+        :redis_max_memory => options.fetch(:memory, '5mb'),
         :redis_port       => options[:port]
       }
     end
