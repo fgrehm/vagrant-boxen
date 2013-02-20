@@ -62,7 +62,10 @@ module Vagrant
         # The root path to be used on the guest machine, changed to avoid
         # collision with the default path for puppet provisioner
         config.pp_path = '/tmp/vagrant-boxen-puppet'
-        config.options << [ '--verbose', '--debug '] if ENV['DEBUG'] == '1'
+
+        config.options << [ '--verbose ' ] if ENV['VERBOSE'] == '1'
+        config.options << [ '--debug ']    if ENV['DEBUG'] == '1'
+
         Vagrant::Provisioners::Puppet.new(env, config)
       end
     end
