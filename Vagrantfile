@@ -9,5 +9,6 @@ Vagrant::Config.run do |config|
 
   config.vm.provision Vagrant::Boxen::Provisioner do |boxen|
     boxen.memcached!
+    boxen.redis!
   end
 end
