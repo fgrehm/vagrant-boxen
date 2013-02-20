@@ -13,10 +13,16 @@ Vagrant::Config.run do |config|
   end
 
   config.vm.provision Vagrant::Boxen::Provisioner do |boxen|
-    boxen.install :memcached
+    # Install modules with defaults (the defaults are listed as examples below):
+    #  boxen.install :memcached, :redis
+
+    # or set module parameters:
+
     boxen.redis {
       memory '5mb'
       port   '6379'
     }
+
+    boxen.memcached { memory '25' }
   end
 end
