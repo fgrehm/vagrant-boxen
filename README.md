@@ -27,21 +27,27 @@ $ vagrant gem install vagrant-boxen
 
 ## Usage
 
-On your Vagrantfile:
+Just add a `Vagrant::Boxen::Provisioner` to your Vagrantfile:
 
 ```ruby
 require 'vagrant-boxen'
 Vagrant::Config.run do |config|
   # ... other settings ...
   config.vm.provision Vagrant::Boxen::Provisioner do |boxen|
-    boxen.memcached!
-    boxen.redis!
+    # Install redis and memcached with defaults
+    boxen.install :redis, :memcached
+
+    # or specify configuration options for the module
+    boxen.redis {
+      port   '1234'
+      memory '1gb'
+    }
   end
 end
 ```
 
-While the modules provided might work on most linux distributions, I'm developing
-against a Ubuntu 12.10 64bits box based on https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box
+While the modules provided might work on most linux distributions, [I'm developing
+against](Vagrantfile) an Ubuntu 12.10 64bits box based on https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box
 
 To find out more about the planned functionality, check out the
 [project's issues](https://github.com/fgrehm/vagrant-boxen/issues).
