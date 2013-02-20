@@ -6,8 +6,16 @@ module Vagrant::Boxen::Modules
       end
     end
 
+    def initialize(options)
+      @options = options.slice(:memory)
+    end
+
     def build_manifest
-      "class { 'redis': }"
+      extra = @options.key?(:memory) ?
+        "redis_max_memory => '#{@options[:memory]}'" :
+        ''
+
+      "class { 'redis': \n#{extra}}"
     end
   end
 end
