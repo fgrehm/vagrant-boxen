@@ -8,7 +8,11 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box"
 
   config.vm.provision Vagrant::Boxen::Provisioner do |boxen|
+    boxen.redis {
+      memory '5mb'
+      port   '1234'
+    }
+
     boxen.memcached!
-    boxen.redis!
   end
 end
