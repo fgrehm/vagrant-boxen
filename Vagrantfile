@@ -15,7 +15,7 @@ Vagrant::Config.run do |config|
   config.vm.provision Vagrant::Boxen::Provisioner do |boxen|
     boxen.redis {
       memory '5mb'
-      port   '1234'
+      port   '6379'
     }
 
     boxen.memcached!

@@ -8,13 +8,13 @@ module Vagrant
       def build
         exec_defaults + @config.enabled_modules.map do |mod|
           mod.build_manifest
-        end.join("\n")
+        end.join("\n\n")
       end
 
       private
 
       def exec_defaults
-        "Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/'] }\n"
+        "Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/'] }\n\n"
       end
     end
   end
