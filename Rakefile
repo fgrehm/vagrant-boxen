@@ -4,7 +4,7 @@ desc 'Update puppet module dependencies using librarian-puppet'
 task :update do
   require 'fileutils'
   sh 'librarian-puppet install --path="puppet-modules" --strip-dot-git --clean --verbose'
-  Dir['./puppet-modules/*/{.git,.gitignore,tests,spec,Rakefile,.travis.yml}'].each do |path|
+  Dir['./puppet-modules/*/{.git,.gitignore,tests,spec,Rakefile,.travis.yml,TODO.md,Gemfile}'].each do |path|
     FileUtils.rm_rf path
   end
 end
