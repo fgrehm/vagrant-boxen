@@ -7,15 +7,23 @@ module Vagrant::Boxen::Modules
     end
 
     def initialize(options)
-      @options = options.slice(:memory)
+      @options = {
+        :redis_max_memory => options[:memory],
+        :redis_port       => options[:port]
+      }
     end
 
     def build_manifest
-      extra = @options.key?(:memory) ?
-        "redis_max_memory => '#{@options[:memory]}'" :
-        ''
+      "class { 'redis': #{puppet_options}}"
+    end
 
-      "class { 'redis': \n#{extra}}"
+    private
+
+    def puppet_options
+      beggining = @options.size > 1 ? "\n" : ''
+      beggining + @options.map do |key, value|
+        "  #{key} => '#{value}',\n" if value
+      end.compact.join
     end
   end
 end
