@@ -7,7 +7,7 @@ module Vagrant::Boxen::Modules
     end
 
     def build_manifest
-      "include redis"
+      "class { 'redis': }"
     end
   end
 end
