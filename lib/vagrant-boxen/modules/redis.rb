@@ -21,7 +21,7 @@ module Vagrant::Boxen::Modules
     private
 
     def eval_options(allowed_options, &block)
-      OptionsEvaluator.new(allowed_options, &block).to_hash
+      Vagrant::Boxen::OptionsEvaluator.new(allowed_options, &block).to_hash
     end
 
     def puppet_options
@@ -29,27 +29,6 @@ module Vagrant::Boxen::Modules
       beggining + @options.map do |key, value|
         "  #{key} => '#{value}',\n" if value
       end.compact.join
-    end
-
-    class OptionsEvaluator
-      def initialize(allowed_options, &block)
-        @allowed_options = allowed_options
-        @block           = block
-        @hash            = {}
-      end
-
-      def method_missing(method, *args)
-        if @allowed_options.include?(method)
-          @hash[method] = args.first
-        else
-          super
-        end
-      end
-
-      def to_hash
-        instance_eval(&@block)
-        @hash
-      end
     end
   end
 end
