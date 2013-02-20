@@ -34,7 +34,7 @@ describe Vagrant::Boxen::Provisioner do
 
     context 'preparation' do
       before do
-        Vagrant::Boxen::ManifestBuilder.stub(new: builder)
+        Vagrant::Boxen::ManifestBuilder.stub(:new => builder)
         subject.prepare
       end
 
