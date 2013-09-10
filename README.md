@@ -9,6 +9,11 @@ of getting a manageable Vagrant machine targetted for development up and
 running without the need to learn [Puppet](https://puppetlabs.com/puppet/what-is-puppet/)
 or [Chef](http://www.opscode.com/chef/).
 
+**DEPRECATED: The idea I had for this plugin has evolved into a Vagrant + Docker 
+combo called [Ventriloquist](https://github.com/fgrehm/ventriloquist) and I'm no
+longer planning to maintain this plugin, feel free to contact me in case you want
+the gem name or continue to work on it.**
+
 
 ## Installation
 
